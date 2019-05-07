@@ -1,0 +1,51 @@
+{
+    "title": "SpectroCoin Merchant",
+    "description": "This is an API designed for merchants who are using SpectroCoin services and wishes to integrate them locally.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/spectrocoin.com/1.0.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://spectrocoin.com/api/merchant/1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "createOrder": {
+            "main": "./lib/actions/createOrder.js",
+            "title": "Create merchant order",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/createOrder.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
